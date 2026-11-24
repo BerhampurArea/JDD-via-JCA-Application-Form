@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0F3CC9">
+<title>Jio Digital Distributor (JDD) – Application Form</title>
+<style>
+  :root{
+    --blue:#0F3CC9; --blue-d:#0A2A91; --bg:#F2F5FC; --card:#fff; --ink:#14213D;
+    --mute:#5B6785; --line:#D5DCEE; --err:#C62828; --ok:#1B8A4B;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+  header{background:linear-gradient(135deg,var(--blue),var(--blue-d));color:#fff;padding:calc(22px + env(safe-area-inset-top)) 18px 54px;text-align:center}
+  header h1{margin:0 0 4px;font-size:1.35rem;letter-spacing:.2px}
+  header p{margin:0;font-size:.92rem;opacity:.9}
+  main{max-width:640px;margin:-34px auto 40px;padding:0 14px}
+  .card{background:var(--card);border-radius:16px;padding:18px 16px;margin-bottom:14px;box-shadow:0 4px 18px rgba(15,60,201,.08)}
+  .card h2{margin:0 0 12px;font-size:1rem;color:var(--blue);display:flex;align-items:center;gap:8px}
+  .card h2 span{background:var(--blue);color:#fff;border-radius:50%;width:24px;height:24px;display:inline-grid;place-items:center;font-size:.8rem}
+  label{display:block;font-weight:600;font-size:.88rem;margin:12px 0 5px}
+  label .req{color:var(--err)}
+  input[type=text],input[type=tel],input[type=number],select,textarea{
+    width:100%;padding:12px;border:1.5px solid var(--line);border-radius:10px;font-size:1rem;background:#fff;color:var(--ink);font-family:inherit}
+  textarea{resize:vertical;min-height:70px}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(15,60,201,.15)}
+  .invalid{border-color:var(--err)!important}
+  .msg{color:var(--err);font-size:.78rem;margin-top:4px;display:none}
+  .msg.show{display:block}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .yn{display:flex;gap:8px}
+  .yn label{flex:1;margin:0;font-weight:600}
+  .yn input{position:absolute;opacity:0;pointer-events:none}
+  .yn span{display:block;text-align:center;padding:11px 0;border:1.5px solid var(--line);border-radius:10px;cursor:pointer;background:#fff}
+  .yn input:checked + span.y{background:var(--ok);border-color:var(--ok);color:#fff}
+  .yn input:checked + span.n{background:var(--err);border-color:var(--err);color:#fff}
+  .yn input:focus-visible + span{box-shadow:0 0 0 3px rgba(15,60,201,.25)}
+  button.submit{width:100%;padding:15px;border:0;border-radius:12px;background:var(--blue);color:#fff;font-size:1.05rem;font-weight:700;cursor:pointer}
+  button.submit:active{background:var(--blue-d)}
+  button.submit:disabled{opacity:.6}
+  .note{font-size:.78rem;color:var(--mute);text-align:center;margin-top:10px}
+  .banner{display:none;padding:12px 14px;border-radius:12px;margin-bottom:14px;font-size:.9rem}
+  .banner.show{display:block}
+  .banner.warn{background:#FFF4D6;color:#7A5200}
+  .banner.bad{background:#FDE7E7;color:var(--err)}
+  .done{display:none;text-align:center;padding:34px 18px}
+  .done .tick{width:70px;height:70px;border-radius:50%;background:var(--ok);color:#fff;font-size:2.2rem;display:grid;place-items:center;margin:0 auto 14px}
+  .done button{margin-top:16px;background:none;border:1.5px solid var(--blue);color:var(--blue);padding:11px 20px;border-radius:10px;font-weight:700;font-size:.95rem}
+</style>
+</head>
+<body>
+<header>
+  <h1>Jio Digital Distributor (JDD)</h1>
+  <p>Application Form </p>
+</header>
+
+<main>
+  <div id="banner" class="banner"></div>
+
+  <form id="form" novalidate autocomplete="off">
+    <div class="card">
+      <h2><span>1</span> JCA Details</h2>
+      <label for="jcaName">JCA Name <b class="req">*</b></label>
+      <input type="text" id="jcaName" required placeholder="Name of Jio Customer Associate">
+      <div class="msg">Please enter JCA name</div>
+
+      <label for="jcaPrmId">JCA PRM ID (68/69 ID) <b class="req">*</b></label>
+      <input type="text" id="jcaPrmId" required inputmode="numeric" maxlength="20" placeholder="e.g. 68xxxxxxxx / 69xxxxxxxx">
+      <div class="msg">Please enter a valid PRM ID (digits only)</div>
+    </div>
+
+    <div class="card">
+      <h2><span>2</span> JDD Details</h2>
+      <label for="jddName">Name (JDD) <b class="req">*</b></label>
+      <input type="text" id="jddName" required placeholder="Full name of the distributor">
+      <div class="msg">Please enter JDD name</div>
+
+      <label for="jddMobile">JDD Contact Number <b class="req">*</b></label>
+      <input type="tel" id="jddMobile" required inputmode="numeric" maxlength="10" placeholder="10-digit mobile number">
+      <div class="msg">Enter a valid 10-digit mobile number</div>
+
+      <div class="row">
+        <div>
+          <label for="age">Age <b class="req">*</b></label>
+          <input type="number" id="age" required inputmode="numeric" min="18" max="70" placeholder="Years">
+          <div class="msg">Age must be 18–70</div>
+        </div>
+        <div>
+          <label for="qualification">Qualification <b class="req">*</b></label>
+          <select id="qualification" required>
+            <option value="">Select</option>
+            <option>Below 10th</option>
+            <option>10th</option>
+            <option>12th</option>
+            <option>Graduate</option>
+            <option>Post Graduate</option>
+            <option>Other</option>
+          </select>
+          <div class="msg">Select qualification</div>
+        </div>
+      </div>
+
+      <label for="relationship">Relationship with JCA <b class="req">*</b></label>
+      <select id="relationship" required>
+        <option value="">Select</option>
+        <option>Husband</option>
+        <option>Son</option>
+        <option>Daughter</option>
+        <option>Father</option>
+        <option>Brother</option>
+        <option>Other Family Member</option>
+        <option>Relative</option>
+        <option>Friend / Neighbour</option>
+        <option>Other</option>
+      </select>
+      <div class="msg">Select relationship</div>
+    </div>
+
+    <div class="card">
+      <h2><span>3</span> Address</h2>
+      <label for="address">Address <b class="req">*</b></label>
+      <textarea id="address" required placeholder="Village / Street, Post, Block"></textarea>
+      <div class="msg">Please enter address</div>
+
+      <div class="row">
+        <div>
+          <label for="pin">Postal Pin Code <b class="req">*</b></label>
+          <input type="tel" id="pin" required inputmode="numeric" maxlength="6" placeholder="6-digit PIN">
+          <div class="msg">Enter a valid 6-digit PIN</div>
+        </div>
+        <div>
+          <label for="district">District Name <b class="req">*</b></label>
+          <select id="district" required>
+            <option value="">Select</option>
+            <optgroup label="Berhampur Area">
+              <option>Ganjam</option><option>Gajapati</option><option>Kandhamal</option>
+              <option>Kalahandi</option><option>Koraput</option><option>Malkangiri</option>
+              <option>Nabarangpur</option><option>Rayagada</option>
+            </optgroup>
+            <optgroup label="Other Odisha Districts">
+              <option>Angul</option><option>Balangir</option><option>Balasore</option><option>Bargarh</option>
+              <option>Bhadrak</option><option>Boudh</option><option>Cuttack</option><option>Deogarh</option>
+              <option>Dhenkanal</option><option>Jagatsinghpur</option><option>Jajpur</option><option>Jharsuguda</option>
+              <option>Kendrapara</option><option>Keonjhar</option><option>Khordha</option><option>Mayurbhanj</option>
+              <option>Nayagarh</option><option>Nuapada</option><option>Puri</option><option>Sambalpur</option>
+              <option>Subarnapur</option><option>Sundargarh</option>
+            </optgroup>
+            <option>Other</option>
+          </select>
+          <div class="msg">Select district</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2><span>4</span> Documents Available?</h2>
+
+      <label>PAN Card <b class="req">*</b></label>
+      <div class="yn" data-name="pan">
+        <label><input type="radio" name="pan" value="Y"><span class="y">Yes</span></label>
+        <label><input type="radio" name="pan" value="N"><span class="n">No</span></label>
+      </div>
+      <div class="msg">Please select</div>
+
+      <label>Aadhaar Card <b class="req">*</b></label>
+      <div class="yn" data-name="aadhaar">
+        <label><input type="radio" name="aadhaar" value="Y"><span class="y">Yes</span></label>
+        <label><input type="radio" name="aadhaar" value="N"><span class="n">No</span></label>
+      </div>
+      <div class="msg">Please select</div>
+
+      <label>Bank Account <b class="req">*</b></label>
+      <div class="yn" data-name="bank">
+        <label><input type="radio" name="bank" value="Y"><span class="y">Yes</span></label>
+        <label><input type="radio" name="bank" value="N"><span class="n">No</span></label>
+      </div>
+      <div class="msg">Please select</div>
+    </div>
+
+    <button type="submit" class="submit" id="submitBtn">Submit Application</button>
+    <p class="note">Your details are used only for JDD onboarding by Jio.</p>
+  </form>
+
+  <div class="card done" id="done">
+    <div class="tick">✓</div>
+    <h2 style="justify-content:center;margin:0 0 6px">Application Submitted</h2>
+    <p style="color:var(--mute);margin:0">Thank you! Our team will contact you soon.</p>
+    <button type="button" id="again">Submit another application</button>
+  </div>
+</main>
+
+<script>
+/* ====== CONFIGURATION ====== */
+// Paste your Google Apps Script Web App URL below (ends with /exec)
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyOMtGFYgHJ1cCDT1CHqVRAGhEj6NNuilbqnbHEhHk8iW7mlqH-vywqWssxAxqe9P9J/exec";
+/* =========================== */
+
+const $ = id => document.getElementById(id);
+const form = $('form'), banner = $('banner'), btn = $('submitBtn');
+const QUEUE_KEY = 'jdd_pending_v1';
+
+function showBanner(text, cls){ banner.textContent = text; banner.className = 'banner show ' + cls; }
+function hideBanner(){ banner.className = 'banner'; }
+
+// digits-only fields
+['jcaPrmId','jddMobile','pin'].forEach(id =>
+  $(id).addEventListener('input', e => { e.target.value = e.target.value.replace(/\D/g,''); }));
+
+function mark(el, ok){
+  const target = el.classList && el.classList.contains('yn') ? el : el;
+  const msg = el.nextElementSibling;
+  el.classList.toggle('invalid', !ok);
+  if (msg && msg.classList.contains('msg')) msg.classList.toggle('show', !ok);
+  return ok;
+}
+
+function validate(){
+  let first = null;
+  const check = (el, ok) => { mark(el, ok); if (!ok && !first) first = el; };
+  const v = id => $(id).value.trim();
+
+  check($('jcaName'), v('jcaName').length >= 2);
+  check($('jcaPrmId'), /^\d{4,20}$/.test(v('jcaPrmId')));
+  check($('jddName'), v('jddName').length >= 2);
+  check($('jddMobile'), /^[6-9]\d{9}$/.test(v('jddMobile')));
+  const age = +v('age'); check($('age'), age >= 18 && age <= 70);
+  check($('qualification'), !!v('qualification'));
+  check($('relationship'), !!v('relationship'));
+  check($('address'), v('address').length >= 5);
+  check($('pin'), /^\d{6}$/.test(v('pin')));
+  check($('district'), !!v('district'));
+  document.querySelectorAll('.yn').forEach(g => {
+    const picked = form.querySelector(`input[name="${g.dataset.name}"]:checked`);
+    check(g, !!picked);
+  });
+  if (first) first.scrollIntoView({behavior:'smooth', block:'center'});
+  return !first;
+}
+
+// clear error state while typing/selecting
+form.addEventListener('input', e => { e.target.classList.remove('invalid');
+  const m = e.target.nextElementSibling; if (m && m.classList.contains('msg')) m.classList.remove('show'); });
+form.addEventListener('change', e => {
+  const g = e.target.closest('.yn'); if (g){ g.nextElementSibling.classList.remove('show'); }
+});
+
+function collect(){
+  const v = id => $(id).value.trim();
+  const r = n => form.querySelector(`input[name="${n}"]:checked`).value;
+  return {
+    jcaName: v('jcaName'), jcaPrmId: v('jcaPrmId'), address: v('address'), pin: v('pin'),
+    district: v('district'), jddName: v('jddName'), jddMobile: v('jddMobile'), age: v('age'),
+    qualification: v('qualification'), relationship: v('relationship'),
+    pan: r('pan'), aadhaar: r('aadhaar'), bank: r('bank')
+  };
+}
+
+async function send(data){
+  // text/plain avoids CORS pre-flight; Apps Script still receives the body
+  const res = await fetch(SCRIPT_URL, {
+    method: 'POST', headers: {'Content-Type':'text/plain;charset=utf-8'},
+    body: JSON.stringify(data)
+  });
+  return res.json();
+}
+
+function getQueue(){ try { return JSON.parse(localStorage.getItem(QUEUE_KEY)||'[]'); } catch(e){ return []; } }
+function setQueue(q){ try { localStorage.setItem(QUEUE_KEY, JSON.stringify(q)); } catch(e){} }
+
+async function flushQueue(){
+  const q = getQueue(); if (!q.length || SCRIPT_URL.startsWith('PASTE')) return;
+  const left = [];
+  for (const item of q){
+    try { const r = await send(item); if (r.status==='error') left.push(item); }
+    catch(e){ left.push(item); }
+  }
+  setQueue(left);
+  if (!left.length && q.length) showBanner(q.length + ' saved application(s) sent successfully.', 'warn');
+}
+
+form.addEventListener('submit', async e => {
+  e.preventDefault(); hideBanner();
+  if (SCRIPT_URL.startsWith('PASTE')){ showBanner('Setup incomplete: Apps Script URL not configured.', 'bad'); return; }
+  if (!validate()) return;
+
+  const data = collect();
+  btn.disabled = true; btn.textContent = 'Submitting…';
+  try {
+    const r = await send(data);
+    if (r.status === 'ok') finish();
+    else if (r.status === 'duplicate') showBanner('This JDD mobile number is already registered.', 'bad');
+    else throw new Error(r.message || 'error');
+  } catch(err){
+    const q = getQueue(); q.push(data); setQueue(q);
+    showBanner('No network. Application saved on this phone and will be sent automatically when you are online.', 'warn');
+    finish(true);
+  } finally {
+    btn.disabled = false; btn.textContent = 'Submit Application';
+  }
+});
+
+function finish(){
+  form.style.display = 'none'; $('done').style.display = 'block';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+$('again').addEventListener('click', () => {
+  form.reset(); form.style.display = 'block'; $('done').style.display = 'none'; hideBanner();
+});
+
+window.addEventListener('online', flushQueue);
+flushQueue();
+</script>
+</body>
+</html>
